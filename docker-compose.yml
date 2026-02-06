@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:18.1-alpine
+    restart: always
+    shm_size: 1024MB
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    secrets:
+      - db_password
+    environment:
+      - POSTGRES_DB=uniman_db
+      - POSTGRES_USER=uniman_db_admin
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+
+  flyway:
+    image: flyway/flyway
+    environment:
+      - FLYWAY_URL=jdbc:postgresql://db:5432/uniman_db
+      - FLYWAY_USER=uniman_db_admin
+      - FLYWAY_LOCATIONS=filesystem:/flyway/migrations
+      - FLYWAY_CONNECT_RETRIES=5
+    entrypoint: >
+      /bin/sh -c 'FLYWAY_PASSWORD=$(cat /run/secrets/db_password) flyway migrate'
+    volumes:
+      - ./db/migration:/flyway/migrations
+    secrets:
+      - db_password
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+
+secrets:
+  db_password:
+    file: ./db/password
