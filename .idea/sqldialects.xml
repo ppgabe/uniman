@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/db/migration/V10__Remove_unnecessary_province_relation_on_barangay.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/migration/V11__Enforce_not_null_on_municipality_id.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/migration/V1__Define_basic_student_and_college_tables.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/migration/V2__Create_psgc_data_landing_table.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/migration/V3__Create_indexes_on_psgc_data.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/migration/V4__Import_psgc_data.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/migration/V5__Normalize_psgc_data.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/db/migration/V6__Connect_address_table_to_psgc_tables.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/migration/V6__Normalize_address_table.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/migration/V7__Truncate_region_code_and_names_to_standard_length.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/migration/V8__Add_HUCs_to_municipalities_table.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/migration/V9__Add_missing_municipal_references_for_HUC_barangays.sql" dialect="PostgreSQL" />
     <file url="PROJECT" dialect="PostgreSQL" />
   </component>
   <component name="SqlResolveMappings">
