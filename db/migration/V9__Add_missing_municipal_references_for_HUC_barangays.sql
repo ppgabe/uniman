@@ -17,4 +17,3 @@ update psgc_barangays pb
 set municipality_id = tsj.mun_id
 from tb_spc_junction tsj
 where pb.id = tsj.bgy_id;
-
