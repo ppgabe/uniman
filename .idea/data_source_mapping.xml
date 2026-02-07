@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/db/migration/V1__Define_basic_student_and_college_tables.sql" value="43383db2-5f9f-4149-bab8-f31757c9f482" />
+    <file url="file://$PROJECT_DIR$/db/migration/V2__Create_psgc_data_landing_table.sql" value="43383db2-5f9f-4149-bab8-f31757c9f482" />
+    <file url="file://$PROJECT_DIR$/db/migration/V3__Create_indexes_on_psgc_data.sql" value="43383db2-5f9f-4149-bab8-f31757c9f482" />
+    <file url="file://$PROJECT_DIR$/db/migration/V4__Import_psgc_data.sql" value="43383db2-5f9f-4149-bab8-f31757c9f482" />
+    <file url="file://$PROJECT_DIR$/db/migration/V5__Normalize_psgc_data.sql" value="43383db2-5f9f-4149-bab8-f31757c9f482" />
+    <file url="file://$PROJECT_DIR$/db/migration/V6__Connect_address_table_to_psgc_tables.sql" value="43383db2-5f9f-4149-bab8-f31757c9f482" />
+  </component>
+</project>
