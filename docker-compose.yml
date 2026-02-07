@@ -23,9 +23,10 @@ services:
       - FLYWAY_LOCATIONS=filesystem:/flyway/migrations
       - FLYWAY_CONNECT_RETRIES=5
     entrypoint: >
-      /bin/sh -c 'FLYWAY_PASSWORD=$(cat /run/secrets/db_password) flyway migrate'
+      /bin/sh -c 'FLYWAY_PASSWORD=$(cat /run/secrets/db_password) flyway migrate -X -outputFile=/flyway/reports/most-recent-run.txt -reportEnabled=true -reportFilename=/flyway/reports/migration-report.html'
     volumes:
       - ./db/migration:/flyway/migrations
+      - ./db/reports:/flyway/reports
     secrets:
       - db_password
     depends_on:
