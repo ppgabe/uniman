@@ -7,6 +7,10 @@ import java.util.UUID;
 
 public class UUIDv7Generator implements UUIDGenerator {
 
+    /**
+     * This uses the java_uuid_generator project by org.fasterxml because the JDK does not
+     * offer UUIDv7 genenration as of JDK 25. JDK 26 has this natively!
+     */
     private static final TimeBasedEpochRandomGenerator uuidGenerator = Generators.timeBasedEpochRandomGenerator();
 
     @Override
