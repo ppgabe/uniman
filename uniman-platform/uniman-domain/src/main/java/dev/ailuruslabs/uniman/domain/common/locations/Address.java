@@ -1,6 +1,7 @@
-package dev.ailuruslabs.uniman.domain.common;
+package dev.ailuruslabs.uniman.domain.common.locations;
 
 import java.time.Instant;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -12,10 +13,8 @@ public final class Address {
     private final UUID uuid;
     private final String address;
     private final String address2;
-    private final String barangay;
-    private final String city;
-    private final String province;
-    private final String region;
+    private final String barangayId;
+
     private final Instant createdAt;
 
     public static Address of(String address, String address2, String barangay, String city, String province,
@@ -35,11 +34,11 @@ public final class Address {
         return new Address(uuid, address, address2, barangay, city, province, region, createdAt, false);
     }
 
-    private Address(UUID uuid, String address, String address2, String barangay, String city, String province,
+    private Address(UUID uuid, String address, String address2, String barangayId, String city, String province,
                     String region, Instant createdAt, boolean validate) {
         requireNonNull(uuid, "UUID cannot be null");
         requireNonNull(address, "Address cannot be null");
-        requireNonNull(barangay, "Barangay cannot be null");
+        requireNonNull(barangayId, "Barangay ID cannot be null");
         requireNonNull(city, "City cannot be null");
         requireNonNull(province, "Province cannot be null");
         requireNonNull(region, "Region cannot be null");
@@ -47,7 +46,7 @@ public final class Address {
 
         if (validate) {
             failIf(address.isBlank(), "Address cannot be blank");
-            failIf(barangay.isBlank(), "Barangay cannot be blank");
+            failIf(barangayId.isBlank(), "Barangay ID cannot be blank");
             failIf(city.isBlank(), "City cannot be blank");
             failIf(province.isBlank(), "Province cannot be blank");
             failIf(region.isBlank(), "Region cannot be blank");
@@ -56,10 +55,7 @@ public final class Address {
         this.uuid = uuid;
         this.address = address;
         this.address2 = address2;
-        this.barangay = barangay;
-        this.city = city;
-        this.province = province;
-        this.region = region;
+        this.barangayId = barangayId;
         this.createdAt = createdAt;
     }
 
@@ -75,23 +71,27 @@ public final class Address {
         return Optional.ofNullable(address2).orElse("");
     }
 
-    public String getBarangay() {
-        return barangay;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public String getRegion() {
-        return region;
+    public String getBarangayId() {
+        return barangayId;
     }
 
     public Instant getCreatedAt() {
         return createdAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {return false;}
+        Address address1 = (Address) o;
+        return Objects.equals(uuid, address1.uuid)
+               && Objects.equals(address, address1.address)
+               && Objects.equals(address2, address1.address2)
+               && Objects.equals(barangayId, address1.barangayId)
+               && Objects.equals(createdAt, address1.createdAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uuid, address, address2, barangayId, createdAt);
     }
 }
