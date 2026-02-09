@@ -3,6 +3,7 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/db/migration/V10__Remove_unnecessary_province_relation_on_barangay.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/migration/V11__Enforce_not_null_on_municipality_id.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/migration/V12__Remove_unnecessary_references_in_address_table.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/migration/V1__Define_basic_student_and_college_tables.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/migration/V2__Create_psgc_data_landing_table.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/migration/V3__Create_indexes_on_psgc_data.sql" dialect="PostgreSQL" />
