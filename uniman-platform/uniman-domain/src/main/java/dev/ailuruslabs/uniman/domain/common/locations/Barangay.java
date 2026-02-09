@@ -9,27 +9,24 @@ import static dev.ailuruslabs.uniman.domain.common.validations.Validations.failI
 
 public final class Barangay {
     private final int id;
-    private final String municipalityCode;
+    private final int municipalityId;
     private final String code;
 
     private final String name;
 
-    public static Barangay of(IdentityGenerator<Integer> idSupplier, String municipalityCode, String code, String name) {
-        return new Barangay(idSupplier.nextIdentity(), municipalityCode, code, name, true);
+    public static Barangay of(IdentityGenerator<Integer> idSupplier, int municipalityId, String code, String name) {
+        return new Barangay(idSupplier.nextIdentity(), municipalityId, code, name, true);
     }
 
-    public static Barangay reconstruct(int id, String municipalityCode, String code, String name) {
-        return new Barangay(id, municipalityCode, code, name, false);
+    public static Barangay reconstruct(int id, int municipalityId, String code, String name) {
+        return new Barangay(id, municipalityId, code, name, false);
     }
 
-    private Barangay(int id, String municipalityCode, String code, String name, boolean validate) {
-        Objects.requireNonNull(municipalityCode, "Municipality code cannot be null");
+    private Barangay(int id, int municipalityId, String code, String name, boolean validate) {
         Objects.requireNonNull(code, "Code cannot be null");
         Objects.requireNonNull(name, "Name cannot be null");
 
         if (validate) {
-            failIf(municipalityCode.isBlank(), "Municipality code cannot be blank");
-            failIf(municipalityCode.length() != 2, "Municipality code must have a length of 2");
             failIf(code.isBlank(), "Code cannot be blank");
             failIf(code.length() != 3, "Code must have a length of 3");
             failIf(name.isBlank(), "Name cannot be blank");
@@ -37,7 +34,7 @@ public final class Barangay {
         }
 
         this.id = id;
-        this.municipalityCode = municipalityCode;
+        this.municipalityId = municipalityId;
         this.code = code;
         this.name = name;
     }
@@ -46,8 +43,8 @@ public final class Barangay {
         return id;
     }
 
-    public String getMunicipalityCode() {
-        return municipalityCode;
+    public int getMunicipalityId() {
+        return municipalityId;
     }
 
     public String getCode() {
@@ -64,13 +61,13 @@ public final class Barangay {
 
         Barangay barangay = (Barangay) o;
 
-        return id == barangay.id && Objects.equals(municipalityCode, barangay.municipalityCode)
+        return id == barangay.id && municipalityId == barangay.municipalityId
                && Objects.equals(code, barangay.code)
                && Objects.equals(name, barangay.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, municipalityCode, code, name);
+        return Objects.hash(id, municipalityId, code, name);
     }
 }

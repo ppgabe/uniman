@@ -15,7 +15,6 @@
         <dependency>
             <groupId>dev.ailuruslabs</groupId>
             <artifactId>uniman-domain</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>

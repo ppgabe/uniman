@@ -11,6 +11,7 @@
     <modules>
         <module>uniman-domain</module>
         <module>uniman-infra-persistence</module>
+        <module>uniman-web</module>
     </modules>
 
     <properties>
@@ -24,6 +25,7 @@
         <skipITs>true</skipITs>
 
         <quarkus.platform.version>3.31.2</quarkus.platform.version>
+        <quarkus.jooq.version>2.1.0</quarkus.jooq.version>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
         <vaadin.version>25.0.4</vaadin.version>
         <org.mapstruct.version>1.6.3</org.mapstruct.version>
@@ -34,6 +36,18 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>dev.ailuruslabs</groupId>
+                <artifactId>uniman-domain</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>dev.ailuruslabs</groupId>
+                <artifactId>uniman-infra-persistence</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.fasterxml.uuid</groupId>
                 <artifactId>java-uuid-generator</artifactId>
@@ -75,6 +89,12 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${org.postgres.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.quarkiverse.jooq</groupId>
+                <artifactId>quarkus-jooq</artifactId>
+                <version>${quarkus.jooq.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -67,9 +67,9 @@ public class ProvinceJooqRepository implements ProvinceRepository, IdentityGener
     }
 
     @Override
-    public Optional<Province> findByCode(String code) {
+    public Optional<Province> findById(int id) {
         return dsl.selectFrom(PSGC_PROVINCES)
-                  .where(PSGC_PROVINCES.CODE.equal(code))
+                  .where(PSGC_PROVINCES.ID.equal(id))
                   .fetchOptional(record -> Province.reconstruct(record.getId(), record.getRegionCode(),
                                                                 record.getCode(), record.getName()));
     }

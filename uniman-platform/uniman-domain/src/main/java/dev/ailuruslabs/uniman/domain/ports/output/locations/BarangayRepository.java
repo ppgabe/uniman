@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface BarangayRepository {
     void save(Barangay barangay);
 
-    Optional<Barangay> findByCode(String code);
-    List<Barangay> findAllByMunicipalityCode(String municipalityCode);
+    Optional<Barangay> findById(int id);
+
+    List<Barangay> findAllByMunicipalityId(int municipalityId);
 }

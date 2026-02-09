@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface ProvinceRepository {
     void save(Province province);
 
-    Optional<Province> findByCode(String code);
+    Optional<Province> findById(int id);
     List<Province> findAllByRegionCode(String regionCode);
 }

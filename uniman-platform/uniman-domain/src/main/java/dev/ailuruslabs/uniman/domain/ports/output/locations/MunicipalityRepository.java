@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface MunicipalityRepository {
     void save(Municipality municipality);
 
-    Optional<Municipality> findByCode(String code);
-    List<Municipality> findAllByProvinceCode(String provinceCode);
+    Optional<Municipality> findById(int id);
+    List<Municipality> findAllByProvinceId(int provinceId);
 }
