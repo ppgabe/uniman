@@ -3,7 +3,6 @@ package dev.ailuruslabs.uniman.domain.common.locations;
 import dev.ailuruslabs.uniman.domain.ports.output.IdentityGenerator;
 
 import java.util.Objects;
-import java.util.function.Supplier;
 
 import static dev.ailuruslabs.uniman.domain.common.validations.Validations.failIf;
 
@@ -13,11 +12,11 @@ public final class Province {
     private final String code;
     private final String name;
 
-    public Province of(IdentityGenerator<Integer> idSupplier, String regionCode, String code, String name, boolean validate) {
+    public static Province of(IdentityGenerator<Integer> idSupplier, String regionCode, String code, String name) {
         return new Province(idSupplier.nextIdentity(), regionCode, code, name, true);
     }
 
-    public Province reconstruct(int id, String regionCode, String code, String name, boolean validate) {
+    public static Province reconstruct(int id, String regionCode, String code, String name) {
         return new Province(id, regionCode, code, name, false);
     }
 

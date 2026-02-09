@@ -14,12 +14,11 @@ public final class Barangay {
 
     private final String name;
 
-    public Barangay of(IdentityGenerator<Integer> idSupplier, String municipalityCode, String code, String name,
-                       boolean validate) {
+    public static Barangay of(IdentityGenerator<Integer> idSupplier, String municipalityCode, String code, String name) {
         return new Barangay(idSupplier.nextIdentity(), municipalityCode, code, name, true);
     }
 
-    public Barangay reconstruct(int id, String municipalityCode, String code, String name, boolean validate) {
+    public static Barangay reconstruct(int id, String municipalityCode, String code, String name) {
         return new Barangay(id, municipalityCode, code, name, false);
     }
 

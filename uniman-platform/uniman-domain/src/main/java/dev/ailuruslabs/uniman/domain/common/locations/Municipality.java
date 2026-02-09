@@ -14,12 +14,11 @@ public final class Municipality {
 
     private final String name;
 
-    public Municipality of(IdentityGenerator<Integer> idSupplier, String provinceCode, String code, String name,
-                           boolean validate) {
+    public static Municipality of(IdentityGenerator<Integer> idSupplier, String provinceCode, String code, String name) {
         return new Municipality(idSupplier.nextIdentity(), provinceCode, code, name, true);
     }
 
-    public Municipality reconstruct(int id, String provinceCode, String code, String name, boolean validate) {
+    public static Municipality reconstruct(int id, String provinceCode, String code, String name) {
         return new Municipality(id, provinceCode, code, name, false);
     }
 
