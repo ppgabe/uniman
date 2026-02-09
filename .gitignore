@@ -1,2 +1,5 @@
 db/password
 db/reports
+**/.flattened-pom.xml
+uniman-platform/*/target
+uniman-platform/uniman-infra-persistence/codegen.properties
