@@ -9,12 +9,6 @@ public final class Province {
     private final int id;
     private final String regionCode;
     private final String code;
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, regionCode, code, name);
-    }
-
     private final String name;
 
     public Province of(Supplier<Integer> idSupplier, String regionCode, String code, String name, boolean validate) {
@@ -69,5 +63,10 @@ public final class Province {
                && Objects.equals(regionCode, province.regionCode)
                && Objects.equals(code, province.code)
                && Objects.equals(name, province.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, regionCode, code, name);
     }
 }
