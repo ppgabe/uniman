@@ -58,6 +58,11 @@ public class ProvinceJooqRepository implements ProvinceRepository, IdentityGener
            .set(PSGC_PROVINCES.CODE, province.getCode())
            .set(PSGC_PROVINCES.NAME, province.getName())
            .set(PSGC_PROVINCES.REGION_CODE, province.getRegionCode())
+           .onConflict(PSGC_PROVINCES.ID) // Upsert instead of erroring out
+           .doUpdate()
+           .set(PSGC_PROVINCES.CODE, province.getCode())
+           .set(PSGC_PROVINCES.NAME, province.getName())
+           .set(PSGC_PROVINCES.REGION_CODE, province.getRegionCode())
            .execute();
     }
 
