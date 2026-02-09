@@ -13,11 +13,10 @@ public final class Address {
     private final UUID uuid;
     private final String address;
     private final String address2;
-    private final String barangayId;
-
+    private final int barangayId;
     private final Instant createdAt;
 
-    public static Address of(String address, String address2, String barangay, String city, String province,
+    public static Address of(String address, String address2, int barangayId, String city, String province,
                              String region) {
         // Create the timestamp first
         var createdAt = Instant.now();
@@ -25,20 +24,19 @@ public final class Address {
         var uuid = UUID_GENERATOR.constructWithTimestamp(createdAt.toEpochMilli());
 
         // This way, our database receives a consistent timestamp for both the UUID and created_at column!
-        return new Address(uuid, address, address2, barangay, city, province, region, createdAt, true);
+        return new Address(uuid, address, address2, barangayId, city, province, region, createdAt, true);
     }
 
-    public static Address reconstruct(UUID uuid, String address, String address2, String barangay, String city,
+    public static Address reconstruct(UUID uuid, String address, String address2, int barangayId, String city,
                                       String province, String region, Instant createdAt) {
         // Allow "permissive reconstitution" in case of legacy data or accidental changes in the repository
-        return new Address(uuid, address, address2, barangay, city, province, region, createdAt, false);
+        return new Address(uuid, address, address2, barangayId, city, province, region, createdAt, false);
     }
 
-    private Address(UUID uuid, String address, String address2, String barangayId, String city, String province,
+    private Address(UUID uuid, String address, String address2, int barangayId, String city, String province,
                     String region, Instant createdAt, boolean validate) {
         requireNonNull(uuid, "UUID cannot be null");
         requireNonNull(address, "Address cannot be null");
-        requireNonNull(barangayId, "Barangay ID cannot be null");
         requireNonNull(city, "City cannot be null");
         requireNonNull(province, "Province cannot be null");
         requireNonNull(region, "Region cannot be null");
@@ -46,7 +44,6 @@ public final class Address {
 
         if (validate) {
             failIf(address.isBlank(), "Address cannot be blank");
-            failIf(barangayId.isBlank(), "Barangay ID cannot be blank");
             failIf(city.isBlank(), "City cannot be blank");
             failIf(province.isBlank(), "Province cannot be blank");
             failIf(region.isBlank(), "Region cannot be blank");
@@ -71,7 +68,7 @@ public final class Address {
         return Optional.ofNullable(address2).orElse("");
     }
 
-    public String getBarangayId() {
+    public int getBarangayId() {
         return barangayId;
     }
 
