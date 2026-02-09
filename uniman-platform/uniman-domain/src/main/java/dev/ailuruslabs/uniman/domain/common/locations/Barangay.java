@@ -1,5 +1,7 @@
 package dev.ailuruslabs.uniman.domain.common.locations;
 
+import dev.ailuruslabs.uniman.domain.ports.output.IdentityGenerator;
+
 import java.util.Objects;
 import java.util.function.Supplier;
 
@@ -12,8 +14,9 @@ public final class Barangay {
 
     private final String name;
 
-    public Barangay of(Supplier<Integer> idSupplier, String municipalityCode, String code, String name, boolean validate) {
-        return new Barangay(idSupplier.get(), municipalityCode, code, name, true);
+    public Barangay of(IdentityGenerator<Integer> idSupplier, String municipalityCode, String code, String name,
+                       boolean validate) {
+        return new Barangay(idSupplier.nextIdentity(), municipalityCode, code, name, true);
     }
 
     public Barangay reconstruct(int id, String municipalityCode, String code, String name, boolean validate) {

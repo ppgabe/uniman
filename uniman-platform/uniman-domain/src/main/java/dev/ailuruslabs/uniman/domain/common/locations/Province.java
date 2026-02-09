@@ -1,5 +1,7 @@
 package dev.ailuruslabs.uniman.domain.common.locations;
 
+import dev.ailuruslabs.uniman.domain.ports.output.IdentityGenerator;
+
 import java.util.Objects;
 import java.util.function.Supplier;
 
@@ -11,8 +13,8 @@ public final class Province {
     private final String code;
     private final String name;
 
-    public Province of(Supplier<Integer> idSupplier, String regionCode, String code, String name, boolean validate) {
-        return new Province(idSupplier.get(), regionCode, code, name, true);
+    public Province of(IdentityGenerator<Integer> idSupplier, String regionCode, String code, String name, boolean validate) {
+        return new Province(idSupplier.nextIdentity(), regionCode, code, name, true);
     }
 
     public Province reconstruct(int id, String regionCode, String code, String name, boolean validate) {
